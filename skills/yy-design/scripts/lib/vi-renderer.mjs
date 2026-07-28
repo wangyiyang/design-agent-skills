@@ -7,7 +7,7 @@ export function createVIRenderer(options = {}) {
 
   renderer.paragraph = ({ tokens }) => {
     const text = renderer.parser.parseInline(tokens);
-    return `<p style="margin:0 0 1em;color:${VI.colors.sumiBlack};font-size:${VI.sizes.body};line-height:${VI.lineHeights.body};font-family:${VI.fonts.sans};">${text}</p>`;
+    return `<p style="margin:0 0 1em;color:${VI.colors.carbonBlack};font-size:${VI.sizes.body};line-height:${VI.lineHeights.body};font-family:${VI.fonts.sans};">${text}</p>`;
   };
 
   renderer.heading = ({ tokens, depth }) => {
@@ -17,14 +17,14 @@ export function createVIRenderer(options = {}) {
     const margin = depth === 1 ? '1.2em 0 0.6em' : '1.6em 0 0.6em';
     
     if (depth === 2) {
-      return `<h2 style="margin:${margin};color:${VI.colors.sumiBlack};font-size:${size};line-height:${VI.lineHeights.heading};font-weight:600;font-family:${VI.fonts.serif};"><span style="color:${VI.colors.vermillion};">▌</span> ${text}</h2>`;
+      return `<h2 style="margin:${margin};color:${VI.colors.carbonBlack};font-size:${size};line-height:${VI.lineHeights.heading};font-weight:700;font-family:${VI.fonts.sans};"><span style="color:${VI.colors.terminalGreen};">▌</span> ${text}</h2>`;
     }
-    return `<h${depth} style="margin:${margin};color:${VI.colors.sumiBlack};font-size:${size};line-height:${VI.lineHeights.heading};font-family:${VI.fonts.serif};">${text}</h${depth}>`;
+    return `<h${depth} style="margin:${margin};color:${VI.colors.carbonBlack};font-size:${size};line-height:${VI.lineHeights.heading};font-weight:700;font-family:${VI.fonts.sans};">${text}</h${depth}>`;
   };
 
   renderer.blockquote = ({ tokens }) => {
     const body = renderer.parser.parse(tokens);
-    return `<blockquote style="margin:1em 0;padding:0.6em 1em;border-left:4px solid ${VI.colors.vermillion};background:rgba(10,10,10,0.05);color:${VI.colors.sumiBlack};font-style:italic;font-size:${VI.sizes.body};line-height:${VI.lineHeights.body};">${body}</blockquote>`;
+    return `<blockquote style="margin:1em 0;padding:0.6em 1em;border-left:4px solid ${VI.colors.terminalGreen};background:rgba(10,10,10,0.05);color:${VI.colors.carbonBlack};font-style:italic;font-size:${VI.sizes.body};line-height:${VI.lineHeights.body};">${body}</blockquote>`;
   };
 
   renderer.code = ({ text, lang }) => {
@@ -35,7 +35,7 @@ export function createVIRenderer(options = {}) {
     const highlighted = options.highlight !== false 
       ? highlightToInline(text, lang)
       : escapeHtml(text);
-    return `<section style="margin:1em 0;background:${VI.colors.sumiBlack};color:${VI.colors.washiWhite};font-family:${VI.fonts.mono};font-size:${VI.sizes.small};line-height:${VI.lineHeights.code};padding:1em;border-radius:6px;overflow-x:auto;"><code>${highlighted}</code></section>`;
+    return `<section style="margin:1em 0;background:${VI.colors.carbonBlack};color:${VI.colors.offWhite};font-family:${VI.fonts.mono};font-size:${VI.sizes.small};line-height:${VI.lineHeights.code};padding:1em;border-radius:6px;overflow-x:auto;"><code>${highlighted}</code></section>`;
   };
 
   renderer.codespan = ({ text }) => {
@@ -45,7 +45,7 @@ export function createVIRenderer(options = {}) {
   renderer.list = ({ items }) => {
     return items.map(item => {
       const text = renderer.parser.parseInline(item.tokens);
-      return `<p style="margin:0 0 0.5em;color:${VI.colors.sumiBlack};font-size:${VI.sizes.body};line-height:${VI.lineHeights.body};font-family:${VI.fonts.sans};"><span style="color:${VI.colors.vermillion};">▸</span> ${text}</p>`;
+      return `<p style="margin:0 0 0.5em;color:${VI.colors.carbonBlack};font-size:${VI.sizes.body};line-height:${VI.lineHeights.body};font-family:${VI.fonts.sans};"><span style="color:${VI.colors.terminalGreen};">▸</span> ${text}</p>`;
     }).join('\n');
   };
 
@@ -63,7 +63,7 @@ export function createVIRenderer(options = {}) {
   };
 
   renderer.link = ({ href, text }) => {
-    return `<a href="${href}" data-external="true" style="color:${VI.colors.vermillion};text-decoration:none;">${text}</a>`;
+    return `<a href="${href}" data-external="true" style="color:${VI.colors.terminalGreen};text-decoration:none;">${text}</a>`;
   };
 
   renderer.hr = () => {

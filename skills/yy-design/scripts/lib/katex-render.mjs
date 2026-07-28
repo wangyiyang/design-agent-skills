@@ -114,7 +114,7 @@ export async function restoreFormulas(html, formulas) {
       const img = `<img src="${dataUrl}" style="${style}" alt="${escapeHtml(formula)}" />`;
       result = result.replace(id, img);
     } else {
-      result = result.replace(id, `<span style="color:#C0392B;font-family:'JetBrains Mono',monospace;">[公式: ${escapeHtml(formula)}]</span>`);
+      result = result.replace(id, `<span style="color:#00E676;font-family:'JetBrains Mono',monospace;">[公式: ${escapeHtml(formula)}]</span>`);
     }
   }
   return result;

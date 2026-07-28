@@ -35,12 +35,12 @@ export function lint(html) {
   const warnings = [];
   const bodyHtml = extractBodyHtml(html);
 
-  // 1. 朱红关键词 ≤ 5 处（仅正文，排除列表前缀▸和小标题前缀▌）
-  let vermillionBody = bodyHtml.replace(/<span style="color:#C0392B;">▌<\/span>/gi, '');
-  vermillionBody = vermillionBody.replace(/<span style="color:#C0392B;">▸<\/span>/gi, '');
-  const vermillionSpans = (vermillionBody.match(/color:#C0392B/gi) || []).length;
-  if (vermillionSpans > 5) {
-    warnings.push(`⚠️ 朱红关键词 ${vermillionSpans} 处（建议 ≤5）`);
+  // 1. 终端绿关键词 ≤ 5 处（仅正文，排除列表前缀与小标题前缀）
+  let greenBody = bodyHtml.replace(/<span style="color:#00E676;">▌<\/span>/gi, '');
+  greenBody = greenBody.replace(/<span style="color:#00E676;">▸<\/span>/gi, '');
+  const greenSpans = (greenBody.match(/color:#00E676/gi) || []).length;
+  if (greenSpans > 5) {
+    warnings.push(`⚠️ 终端绿关键词 ${greenSpans} 处（建议 ≤5）`);
   }
 
   // 2. 加粗关键句 ≤ 3 处（仅正文，排除列表项中的加粗）
@@ -51,12 +51,12 @@ export function lint(html) {
     warnings.push(`⚠️ 加粗关键句 ${strongCount} 处（建议 ≤3）`);
   }
 
-  // 3. 朱红不大段（简化：检查 blockquote 或 section 含朱红）
-  const vermillionBlocks = (html.match(/style="[^"]*color:#C0392B[^"]*"[^>]*>([\s\S]*?)<\/[^>]+>/gi) || []);
-  for (const block of vermillionBlocks) {
+  // 3. 终端绿不能用于大段文字。
+  const greenBlocks = (html.match(/style="[^"]*color:#00E676[^"]*"[^>]*>([\s\S]*?)<\/[^>]+>/gi) || []);
+  for (const block of greenBlocks) {
     const lineCount = (block.match(/<p/gi) || []).length;
     if (lineCount > 3) {
-      warnings.push(`⚠️ 发现大段朱红文本（${lineCount} 行），建议拆散`);
+      warnings.push(`⚠️ 发现大段终端绿文本（${lineCount} 行），建议拆散`);
       break;
     }
   }

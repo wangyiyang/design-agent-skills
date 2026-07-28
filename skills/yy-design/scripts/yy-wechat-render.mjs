@@ -17,14 +17,13 @@ const PROJECT_ROOT = path.resolve(__dirname, '..');
 // ── VI 常量 ─────────────────────────────────────────────────────────
 export const VI = {
   colors: {
-    sumiBlack: '#0A0A0A',
-    washiWhite: '#FAFAFA',
-    vermillion: '#C0392B',
-    mutedGold: '#B8860B',
+    carbonBlack: '#0A0A0A',
+    offWhite: '#FAFAFA',
+    terminalGreen: '#00E676',
   },
   fonts: {
-    serif: "'Source Han Serif SC','Songti SC',serif",
-    sans: "'Source Han Sans SC','PingFang SC',sans-serif",
+    sans: "'Source Han Sans SC','Noto Sans SC','PingFang SC',sans-serif",
+    english: "'Inter',-apple-system,BlinkMacSystemFont,sans-serif",
     mono: "'JetBrains Mono','SF Mono',monospace",
   },
   sizes: {
@@ -37,10 +36,10 @@ export const VI = {
 };
 
 export const ALLOWED_COLORS = new Set([
-  '#0A0A0A', '#FAFAFA', '#C0392B', '#B8860B',
+  '#0A0A0A', '#FAFAFA', '#00E676',
   '#FFFFFF', '#000000',
   ...generateAlphaVariants('#0A0A0A'),
-  ...generateAlphaVariants('#C0392B'),
+  ...generateAlphaVariants('#00E676'),
 ]);
 
 function generateAlphaVariants(hex) {
@@ -124,7 +123,7 @@ export async function renderMarkdown(mdPath, options = {}) {
       if (svg) {
         html = html.replace(full, `<div style="margin:1em 0;text-align:center;">${svg}</div>`);
       } else {
-        html = html.replace(full, `<section style="margin:1em 0;background:${VI.colors.sumiBlack};color:${VI.colors.washiWhite};padding:1em;border-radius:6px;"><code style="font-family:${VI.fonts.mono};">[mermaid 渲染失败]</code></section>`);
+        html = html.replace(full, `<section style="margin:1em 0;background:${VI.colors.carbonBlack};color:${VI.colors.offWhite};padding:1em;border-radius:6px;"><code style="font-family:${VI.fonts.mono};">[mermaid 渲染失败]</code></section>`);
       }
     }
   }

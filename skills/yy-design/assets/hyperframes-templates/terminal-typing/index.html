@@ -23,21 +23,20 @@
         display: flex; align-items: center; padding: 0 16px; gap: 8px;
       }
       .dot { width: 12px; height: 12px; border-radius: 50%; }
-      .dot-r { background: #C0392B; }
-      .dot-y { background: #B8860B; }
-      .dot-g { background: #27ae60; }
+      .dot-r, .dot-y { background: rgba(250,250,250,0.18); }
+      .dot-g { background: #00E676; border-radius: 2px; }
       .terminal-body {
         padding: 32px 40px; font-family: "JetBrains Mono", monospace;
         font-size: 22px; line-height: 1.8; color: #FAFAFA; min-height: 380px;
       }
       .line { opacity: 0; }
-      .prompt { color: #C0392B; }
+      .prompt { color: #00E676; }
       .comment { color: rgba(250,250,250,0.35); }
-      .string { color: #B8860B; }
-      .keyword { color: #C0392B; }
+      .string { color: rgba(250,250,250,0.72); }
+      .keyword { color: #00E676; }
       .cursor {
         display: inline-block; width: 10px; height: 24px;
-        background: #C0392B; vertical-align: middle; margin-left: 2px;
+        background: #00E676; vertical-align: middle; margin-left: 2px;
       }
     </style>
   </head>
@@ -57,7 +56,7 @@
           <div class="line" id="l2"><span class="comment"># ✓ skill installed</span></div>
           <div class="line" id="l3">&nbsp;</div>
           <div class="line" id="l4"><span class="prompt">$</span> <span class="string">"做一段产品发布动画，导出 MP4"</span></div>
-          <div class="line" id="l5"><span class="comment"># → 选定方向: 东方极简</span></div>
+          <div class="line" id="l5"><span class="comment"># → 选定方向: 精密工业极简</span></div>
           <div class="line" id="l6"><span class="comment"># → 生成 HTML 动画...</span></div>
           <div class="line" id="l7"><span class="comment"># → 渲染 1920×1080 30fps...</span></div>
           <div class="line" id="l8"><span class="keyword">✓</span> output.mp4 <span class="comment">(2.1 MB, 15s)</span></div>
