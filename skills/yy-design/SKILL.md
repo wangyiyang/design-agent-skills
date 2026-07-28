@@ -85,4 +85,4 @@ description: Use when creating or reviewing high-fidelity HTML prototypes, inter
 - 幻灯片与 PPTX：`references/slide-decks.md`、`references/editable-pptx.md`
 - 风格与评审：`references/design-styles.md`、`references/content-guidelines.md`、`references/critique-guide.md`
 - 翊行代码 VI：`references/yy-vi-v2.md`（代表翊行代码、YY、王翊仰或 `wangyiyang.cc` 时必读）
-- 翊行代码 VI 动态示例：`assets/examples/`（仅用于校准视觉与运动语言，不作为可直接换色复用的品牌模板）
+- 翊行代码 VI 动态示例：`assets/showcase/`（生成源）、`assets/gifs/`、`assets/videos/`；仅用于校准视觉与运动语言，不作为可直接换色复用的品牌模板

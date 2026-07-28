@@ -43,35 +43,35 @@ npx skills add . --list
 
 ## VI v2.1 示例
 
-以下示例统一使用碳黑 `#0A0A0A`、米白 `#FAFAFA` 与终端绿 `#00E676`，采用无衬线排印、几何构图和单点信号表达。每个 GIF 均提供同名 MP4，位于 [`skills/yy-design/assets/examples`](skills/yy-design/assets/examples)。
+以下示例统一使用碳黑 `#0A0A0A`、米白 `#FAFAFA` 与终端绿 `#00E676`，采用无衬线排印、几何构图和单点信号表达。生成源、GIF 和 MP4 分别位于 [`assets/showcase`](skills/yy-design/assets/showcase)、[`assets/gifs`](skills/yy-design/assets/gifs) 和 [`assets/videos`](skills/yy-design/assets/videos)。
 
 ### 品牌 Hero
 
-![YY Design VI v2.1 Hero](skills/yy-design/assets/examples/hero-vi-v2.gif)
+![YY Design VI v2.1 Hero](skills/yy-design/assets/gifs/hero-vi-v2.gif)
 
 ### iOS 原型
 
-![iOS 原型示例](skills/yy-design/assets/examples/c1-ios-prototype.gif)
+![iOS 原型示例](skills/yy-design/assets/gifs/c1-ios-prototype.gif)
 
 ### 幻灯片与可编辑 PPTX
 
-![幻灯片示例](skills/yy-design/assets/examples/c2-slides-pptx.gif)
+![幻灯片示例](skills/yy-design/assets/gifs/c2-slides-pptx.gif)
 
 ### 动效系统
 
-![动效系统示例](skills/yy-design/assets/examples/c3-motion-design.gif)
+![动效系统示例](skills/yy-design/assets/gifs/c3-motion-design.gif)
 
 ### 信息图
 
-![信息图示例](skills/yy-design/assets/examples/c5-infographic.gif)
+![信息图示例](skills/yy-design/assets/gifs/c5-infographic.gif)
 
 ### 专家评审
 
-![专家评审示例](skills/yy-design/assets/examples/c6-expert-review.gif)
+![专家评审示例](skills/yy-design/assets/gifs/c6-expert-review.gif)
 
 ### 设计方向顾问
 
-![设计方向顾问示例](skills/yy-design/assets/examples/w3-design-advisor.gif)
+![设计方向顾问示例](skills/yy-design/assets/gifs/w3-design-advisor.gif)
 
 ## 验证
 

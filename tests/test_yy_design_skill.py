@@ -65,16 +65,21 @@ class YYDesignSkillContractTest(unittest.TestCase):
         self.assertIn("npx skills add wangyiyang/design-agent-skills --skill yy-design", content)
 
     def test_vi_v2_examples_are_complete_and_discoverable(self):
-        examples_dir = ROOT / "skills" / "yy-design" / "assets" / "examples"
-        readme = README.read_text(encoding="utf-8")
+        skill_dir = ROOT / "skills" / "yy-design"
+        assets_dir = skill_dir / "assets"
+        readme = (skill_dir / "README.md").read_text(encoding="utf-8")
 
         for name in self.EXAMPLE_NAMES:
-            self.assertTrue((examples_dir / f"{name}.gif").is_file(), name)
-            self.assertTrue((examples_dir / f"{name}.mp4").is_file(), name)
-            self.assertIn(f"skills/yy-design/assets/examples/{name}.gif", readme)
+            self.assertTrue((assets_dir / "gifs" / f"{name}.gif").is_file(), name)
+            self.assertTrue((assets_dir / "videos" / f"{name}.mp4").is_file(), name)
+            self.assertTrue((assets_dir / "showcase" / f"{name}.html").is_file(), name)
+            self.assertIn(f"assets/gifs/{name}.gif", readme)
 
         for forbidden_term in ("水墨", "书法", "朱红", "哑金", "咖啡棕", "hero-ink-brand"):
             self.assertNotIn(forbidden_term, readme)
+
+        self.assertTrue((assets_dir / "banner.svg").is_file())
+        self.assertIn("assets/banner.svg", readme)
 
 
 if __name__ == "__main__":
