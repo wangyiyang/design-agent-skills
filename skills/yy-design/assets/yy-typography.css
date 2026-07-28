@@ -1,172 +1,61 @@
-/**
- * YY Design · 字体系统
- * 
- * 中文 + 英文 + 代码三栈，全部开源免费
- */
-
-/* ========== 字体引入 ========== */
-
-/* 中文标题：思源宋体 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap');
-
-/* 中文正文：思源黑体 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
-
-/* 英文：Inter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-/* 代码：JetBrains Mono */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-
-/* ========== 字体变量 ========== */
+/** 翊行代码 VI v2.1 · 无衬线字体系统 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
 :root {
-  /* 中文标题 */
-  --yy-font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
-  
-  /* 中文正文 */
-  --yy-font-sans: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  
-  /* 英文 */
-  --yy-font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  
-  /* 代码 */
-  --yy-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', monospace;
-
-  /* ========== 字号阶梯 ========== */
-  --yy-text-h1: 32px;
-  --yy-text-h2: 24px;
-  --yy-text-h3: 20px;
-  --yy-text-body: 16px;
-  --yy-text-small: 14px;
-  --yy-text-caption: 12px;
-
-  /* ========== 行高 ========== */
-  --yy-leading-tight: 1.3;     /* VI: 标题行高 1.3 */
-  --yy-leading-normal: 1.7;    /* VI: 正文行高 1.7 */
-  --yy-leading-relaxed: 1.7;   /* VI: 同正文 */
-
-  /* ========== 字重 ========== */
-  --yy-weight-regular: 400;
-  --yy-weight-medium: 500;
-  --yy-weight-semibold: 600;
-  --yy-weight-bold: 700;
+  --yy-font-zh: 'Source Han Sans SC', 'Noto Sans SC', 'PingFang SC', sans-serif;
+  --yy-font-en: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --yy-font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --yy-line-heading: 1.3;
+  --yy-line-body: 1.7;
+  --yy-line-code: 1.5;
 }
 
-/* ========== 标题样式 ========== */
+.yy-h1,
+.yy-h2,
+.yy-h3 {
+  color: var(--yy-carbon-black, #0A0A0A);
+  font-family: var(--yy-font-zh);
+  line-height: var(--yy-line-heading);
+}
 
 .yy-h1 {
-  font-family: var(--yy-font-serif);
-  font-size: var(--yy-text-h1);
-  font-weight: var(--yy-weight-semibold);
-  line-height: var(--yy-leading-tight);
-  color: var(--yy-sumi);
-  letter-spacing: 0.02em;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .yy-h2 {
-  font-family: var(--yy-font-serif);
-  font-size: var(--yy-text-h2);
-  font-weight: var(--yy-weight-semibold);
-  line-height: var(--yy-leading-tight);
-  color: var(--yy-sumi);
-  letter-spacing: 0.01em;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .yy-h3 {
-  font-family: var(--yy-font-sans);
-  font-size: var(--yy-text-h3);
-  font-weight: var(--yy-weight-medium);
-  line-height: var(--yy-leading-normal);
-  color: var(--yy-sumi);
+  font-size: 1.25rem;
+  font-weight: 600;
 }
-
-/* ========== 正文样式 ========== */
 
 .yy-body {
-  font-family: var(--yy-font-sans);
-  font-size: var(--yy-text-body);
-  font-weight: var(--yy-weight-regular);
-  line-height: var(--yy-leading-relaxed);
-  color: var(--yy-sumi);
+  color: var(--yy-carbon-black, #0A0A0A);
+  font-family: var(--yy-font-zh);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
 }
 
-.yy-body-medium {
-  font-family: var(--yy-font-sans);
-  font-size: var(--yy-text-body);
-  font-weight: var(--yy-weight-medium);
-  line-height: var(--yy-leading-relaxed);
-  color: var(--yy-sumi);
+.yy-english {
+  font-family: var(--yy-font-en);
 }
-
-/* ========== 英文样式 ========== */
-
-.yy-en {
-  font-family: var(--yy-font-inter);
-  font-size: var(--yy-text-body);
-  font-weight: var(--yy-weight-regular);
-  line-height: var(--yy-leading-normal);
-  color: var(--yy-sumi);
-}
-
-.yy-en-title {
-  font-family: var(--yy-font-inter);
-  font-size: var(--yy-text-h2);
-  font-weight: var(--yy-weight-semibold);
-  line-height: var(--yy-leading-tight);
-  color: var(--yy-sumi);
-  letter-spacing: -0.02em;
-}
-
-.yy-tagline {
-  font-family: var(--yy-font-inter);
-  font-size: var(--yy-text-small);
-  font-weight: var(--yy-weight-medium);
-  line-height: var(--yy-leading-normal);
-  color: var(--yy-sumi-600);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* ========== 代码样式 ========== */
 
 .yy-code {
+  background: var(--yy-carbon-black, #0A0A0A);
+  color: var(--yy-off-white, #FAFAFA);
   font-family: var(--yy-font-mono);
-  font-size: var(--yy-text-small);
-  font-weight: var(--yy-weight-regular);
-  line-height: var(--yy-leading-normal);
-  color: var(--yy-sumi);
-  background-color: var(--yy-sumi-50);
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: var(--yy-line-code);
 }
-
-.yy-code-block {
-  font-family: var(--yy-font-mono);
-  font-size: var(--yy-text-small);
-  font-weight: var(--yy-weight-regular);
-  line-height: var(--yy-leading-normal);
-  color: var(--yy-washi);
-  background-color: var(--yy-sumi-900);
-  padding: 16px 20px;
-  border-radius: 8px;
-  overflow-x: auto;
-}
-
-/* ========== 辅助文字 ========== */
 
 .yy-caption {
-  font-family: var(--yy-font-sans);
-  font-size: var(--yy-text-caption);
-  font-weight: var(--yy-weight-regular);
-  line-height: var(--yy-leading-normal);
-  color: var(--yy-sumi-400);
-}
-
-.yy-small {
-  font-family: var(--yy-font-sans);
-  font-size: var(--yy-text-small);
-  font-weight: var(--yy-weight-regular);
-  line-height: var(--yy-leading-normal);
-  color: var(--yy-sumi-600);
+  color: rgba(10, 10, 10, 0.4);
+  font-family: var(--yy-font-zh);
+  font-size: 0.75rem;
+  line-height: 1.5;
 }

@@ -60,7 +60,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-  background: #C0392B;
+  background: #00E676;
+  color: #0A0A0A;
   color: #FAFAFA;
   border: none;
   padding: 1em 2.5em;
@@ -98,11 +99,11 @@ body {
 }
 .status.success::before {
   content: "✓ ";
-  color: #C0392B;
+  color: #00E676;
   font-weight: bold;
 }
 .status.error {
-  color: #C0392B;
+  color: #00E676;
 }
 .status.error::before {
   content: "⚠ ";
@@ -116,7 +117,7 @@ body {
   text-underline-offset: 3px;
 }
 .preview-toggle:hover {
-  color: #C0392B;
+  color: #00E676;
 }
 .preview-box {
   margin-top: 1em;

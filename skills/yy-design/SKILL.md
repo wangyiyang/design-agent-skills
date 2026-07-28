@@ -32,6 +32,10 @@ description: Use when creating or reviewing high-fidelity HTML prototypes, inter
 - 将来源、可用资产、色板、字体、使用限制和气质关键词写入交付目录的 `brand-spec.md`。
 - 找不到必需资产时，明确告诉用户并请求素材或将产物标注为概念稿；不要手绘假 Logo 或假产品图替代真实资产。
 
+### 翊行代码品牌例外
+
+当产出代表「翊行代码」、YY、王翊仰或 `wangyiyang.cc` 时，必须先读 [references/yy-vi-v2.md](references/yy-vi-v2.md)，并以其中的 VI v2.1 为最高优先级：碳黑 `#0A0A0A`、冷白 `#FAFAFA`、终端绿 `#00E676`；无衬线字体；几何网格与精密仪器气质。禁止使用旧版朱红、哑金、书法、水墨、印章、宣纸或手写 `{翊}` Logo。新 v2.1 Logo 未提供时，向用户索取资产或使用明确标注的几何占位符。
+
 ## 设计方向
 
 当用户没有视觉参考或需求含糊时，先给出三个互斥方向，每个方向包含：设计哲学、情绪关键词、色彩/字体建议、版式策略、适合的产物和风险。优先推荐一个方向，但等待用户选择后再制作高保真稿。
@@ -51,7 +55,7 @@ description: Use when creating or reviewing high-fidelity HTML prototypes, inter
 
 ## 视觉与技术约束
 
-- 先建立排版、间距、色彩、组件和动画规则，再填充页面；复用 `assets/typography.css`、`assets/colors.css` 与 `assets/components/ink-components.css`。
+- 先建立排版、间距、色彩、组件和动画规则，再填充页面；为翊行代码产出时复用 `assets/yy-typography.css` 与 `assets/yy-color-palette.css`。
 - 不使用无意义紫色渐变、emoji 图标、悬浮圆角卡片堆砌、左侧彩条卡片、手绘 SVG 人物或仅靠 Inter 的通用 AI 风格。
 - 动画不要默认 linear；使用有叙事目的的缓动、停顿与连续转场。避免 `file://` 加载外部 JSX 的 CORS 问题；单文件交付时内联依赖。
 - React + Babel 产物遵循 [references/react-setup.md](references/react-setup.md) 的版本和作用域约束。
@@ -71,7 +75,7 @@ description: Use when creating or reviewing high-fidelity HTML prototypes, inter
 
 - `一笔 <类型>`：说明假设后直接出稿。
 - `速写 <主题>`：优先交付灰阶结构、placeholder 和设计理由。
-- `钤印`：在用户明确要求时，为最终视觉产物添加 `{翊}` 签名；不要默认添加水印。
+- `署名`：在用户明确要求时，按载体使用「翊行代码」、YY 或王翊仰；不要默认添加水印或伪造 Logo。
 
 ## 资源路由
 
@@ -80,3 +84,4 @@ description: Use when creating or reviewing high-fidelity HTML prototypes, inter
 - 动画与导出：`references/animations.md`、`references/animation-best-practices.md`、`references/animation-pitfalls.md`、`references/video-export.md`
 - 幻灯片与 PPTX：`references/slide-decks.md`、`references/editable-pptx.md`
 - 风格与评审：`references/design-styles.md`、`references/content-guidelines.md`、`references/critique-guide.md`
+- 翊行代码 VI：`references/yy-vi-v2.md`（代表翊行代码、YY、王翊仰或 `wangyiyang.cc` 时必读）

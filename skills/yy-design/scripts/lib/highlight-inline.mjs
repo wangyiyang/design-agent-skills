@@ -2,21 +2,21 @@ import hljs from 'highlight.js';
 
 // VI 配色方案下的代码高亮颜色映射
 const TOKEN_COLORS = {
-  keyword: '#C0392B',       // 朱红 — 关键字
-  string: '#B8860B',        // 哑金 — 字符串
-  number: '#B8860B',        // 哑金 — 数字
+  keyword: '#00E676',       // 终端绿 — 关键字
+  string: 'rgba(250,250,250,0.72)',
+  number: 'rgba(250,250,250,0.72)',
   function: '#FAFAFA',      // 宣白 — 函数名
   class: '#FAFAFA',         // 宣白 — 类名
   comment: 'rgba(250,250,250,0.4)',  // 半透明宣白 — 注释
-  operator: '#C0392B',      // 朱红 — 运算符
+  operator: '#00E676',      // 终端绿 — 运算符
   punctuation: 'rgba(250,250,250,0.7)', // 标点
   property: '#FAFAFA',      // 属性
   variable: '#FAFAFA',      // 变量
   params: '#FAFAFA',        // 参数
-  built_in: '#C0392B',      // 内置
-  literal: '#B8860B',       // 字面量
-  type: '#C0392B',          // 类型
-  regexp: '#B8860B',        // 正则
+  built_in: '#00E676',      // 内置
+  literal: 'rgba(250,250,250,0.72)',
+  type: '#00E676',          // 类型
+  regexp: 'rgba(250,250,250,0.72)',
   subst: '#FAFAFA',         // 模板替换
   default: '#FAFAFA',       // 默认
 };

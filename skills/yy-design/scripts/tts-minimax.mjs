@@ -21,7 +21,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SKILL_ROOT = path.resolve(__dirname, '..');
 
-// 翊行代码 · 水墨叙事音色映射
+// 翊行代码 · 克制、精密的叙事音色映射
 const VOICES = {
   scholar: { voice_id: process.env.MMX_TTS_VOICE_SCHOLAR || 'male-qn-qingse', desc: '克制低沉，文人质感' },
   calm: { voice_id: process.env.MMX_TTS_VOICE_CALM || 'female-shaonv-jingpin', desc: '沉静温柔' },

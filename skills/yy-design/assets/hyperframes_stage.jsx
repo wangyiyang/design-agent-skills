@@ -141,11 +141,9 @@
   // VI 预设 · yy-design 品牌运动语言
   // ═══════════════════════════════════════════
   const VI = {
-    sumi: '#0A0A0A',
-    washi: '#FAFAFA',
-    vermillion: '#C0392B',
-    gold: '#B8860B',
-    fontSerif: '"Noto Serif SC", "Source Han Serif SC", serif',
+    carbonBlack: '#0A0A0A',
+    offWhite: '#FAFAFA',
+    terminalGreen: '#00E676',
     fontMono: '"JetBrains Mono", "Fira Code", monospace',
     fontSans: '"Noto Sans SC", "Source Han Sans SC", sans-serif',
   };
@@ -164,4 +162,3 @@
     VI,
   };
 })();
-

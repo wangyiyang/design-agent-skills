@@ -175,18 +175,18 @@ npx hyperframes render --output output-60fps.mp4 --fps 60 --quality high
 
 ### 预制模板
 
-在 `assets/hyperframes-templates/` 下提供 4 个 VI 化模板：
+在 `assets/hyperframes-templates/` 下提供 2 个模板：
 
 | 模板 | 时长 | 用途 |
 |------|------|------|
-| `logo-reveal/` | 5s | 品牌 Logo 揭示 |
 | `product-reveal/` | 5s | 产品展示 |
-| `brand-sizzle/` | 12s | 品牌宣传片（多场景） |
 | `terminal-typing/` | 8s | 终端打字效果 |
+
+翊行代码 v2.1 Logo 正式矢量资产尚未提供，因此不附带 Logo reveal 或 brand sizzle 模板；不要用文字 glyph 伪造 Logo。
 
 使用方式：
 ```bash
-cp -r assets/hyperframes-templates/logo-reveal/ my-video/
+cp -r assets/hyperframes-templates/product-reveal/ my-video/
 # 编辑 my-video/index.html
 npx hyperframes render --output my-video.mp4
 ```

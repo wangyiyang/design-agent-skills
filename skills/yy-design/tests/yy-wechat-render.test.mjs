@@ -23,13 +23,13 @@ describe('parseArgs', () => {
 
 describe('VI constants', () => {
   it('has expected colors', () => {
-    assert.strictEqual(VI.colors.sumiBlack, '#0A0A0A');
-    assert.strictEqual(VI.colors.vermillion, '#C0392B');
+    assert.strictEqual(VI.colors.carbonBlack, '#0A0A0A');
+    assert.strictEqual(VI.colors.terminalGreen, '#00E676');
   });
 
   it('ALLOWED_COLORS includes alpha variants', () => {
     assert(ALLOWED_COLORS.has('rgba(10,10,10,0.6)'));
-    assert(ALLOWED_COLORS.has('rgba(192,57,43,0.5)'));
+    assert(ALLOWED_COLORS.has('rgba(0,230,118,0.5)'));
   });
 });
 
@@ -42,18 +42,18 @@ describe('vi-renderer', () => {
     assert(html.includes("font-family:'Source Han Sans SC'"));
   });
 
-  it('renders h2 with vermillion prefix', () => {
+  it('renders h2 with terminal-green prefix', () => {
     const renderer = createVIRenderer();
     const html = marked.parse('## Title', { renderer });
     assert(html.includes('▌'));
-    assert(html.includes('color:#C0392B'));
+    assert(html.includes('color:#00E676'));
     assert(html.includes('font-size:24px'));
   });
 
   it('renders blockquote with left border', () => {
     const renderer = createVIRenderer();
     const html = marked.parse('> Quote', { renderer });
-    assert(html.includes('border-left:4px solid #C0392B'));
+    assert(html.includes('border-left:4px solid #00E676'));
     assert(html.includes('background:rgba(10,10,10,0.05)'));
   });
 
@@ -101,11 +101,11 @@ describe('svg-render', () => {
 import { postProcess } from '../scripts/lib/post-process.mjs';
 
 describe('post-process', () => {
-  it('replaces external links with vermillion spans', () => {
+  it('replaces external links with terminal-green spans', () => {
     const html = '<p><a href="https://example.com" data-external="true">Example</a></p>';
     const result = postProcess(html);
     assert(!result.includes('<a'));
-    assert(result.includes('color:#C0392B'));
+    assert(result.includes('color:#00E676'));
     assert(result.includes('Example'));
   });
 
@@ -138,10 +138,10 @@ describe('post-process', () => {
 import { lint } from '../scripts/lib/linter.mjs';
 
 describe('linter', () => {
-  it('warns on too many vermillion spans', () => {
-    const html = '<p><span style="color:#C0392B;">1</span></p>'.repeat(7);
+  it('warns on too many terminal-green spans', () => {
+    const html = '<p><span style="color:#00E676;">1</span></p>'.repeat(7);
     const warnings = lint(html);
-    assert(warnings.some(w => w.includes('朱红') && w.includes('7')));
+    assert(warnings.some(w => w.includes('终端绿') && w.includes('7')));
   });
 
   it('warns on too many strong tags', () => {
