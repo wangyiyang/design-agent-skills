@@ -1,0 +1,4 @@
+interface:
+  display_name: "YY Design"
+  short_description: "创建经过浏览器验证的高保真 HTML 视觉设计产物与原型"
+  default_prompt: "使用 $yy-design 为我创建一个可验证的高保真设计原型。"
