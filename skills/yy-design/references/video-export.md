@@ -5,7 +5,7 @@
 ## 何时导出
 
 **导出时机**：
-- 动画完整跑通、视觉验证过（浏览器 preview 确认各时间点状态正确）
+- 动画完整跑通、视觉验证过（Playwright 截图确认各时间点状态正确）
 - 用户在浏览器里看过至少一次，表示效果 OK
 - **不要**在动画 bug 没修完的阶段导出——导出到视频后改起来更贵
 
@@ -62,6 +62,8 @@ bash add-music.sh <input.mp4> [--mood=<name>] [--music=<path>] [--out=<path>]
 
 **内置 BGM 库**（在 `assets/bgm-<mood>.mp3`）：
 
+> ⚠️ BGM 音频资产（`assets/bgm-*.mp3`）未随仓分发，使用 add-music.sh 前需自备 BGM 文件（按 `bgm-<mood>.mp3` 命名放入 `assets/`，或用 `--music=<path>` 直接指定外部音频）。
+
 | `--mood=` | 风格 | 适配场景 |
 |-----------|------|---------|
 | `tech`（默认） | Apple Silicon / 苹果发布会，极简合成器+钢琴 | 产品发布、AI工具、Skill 宣传 |
@@ -99,7 +101,7 @@ bash add-music.sh animation-60fps.mp4 --mood=ad --out=promo-final.mp4
 从已有 MP4 生成 60fps 版本和 GIF。
 
 ```bash
-bash /path/to/claude-design/scripts/convert-formats.sh <input.mp4> [gif_width] [--minterpolate]
+bash scripts/convert-formats.sh <input.mp4> [gif_width] [--minterpolate]
 ```
 
 输出（与输入同目录）：
@@ -209,6 +211,22 @@ npx hyperframes render --output my-video.mp4
 | 渲染超时 | 检查是否有 `repeat: -1` 或无限循环 |
 | 黑帧 | 确认 `data-duration` 覆盖了所有动画时间 |
 
+### ffmpeg minterpolate 参数
+
+当前配置：`minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1`
+
+- `mi_mode=mci` — motion compensation interpolation（运动补偿）
+- `mc_mode=aobmc` — adaptive overlapped block motion compensation
+- `me_mode=bidir` — 双向运动估计
+- `vsbmc=1` — 可变 size block motion compensation
+
+对 CSS **transform 动画**（translate/scale/rotate）效果好。
+对**纯 fade** 可能产生轻微 ghosting——如果用户嫌弃，退化为简单帧复制：
+
+```bash
+ffmpeg -i input.mp4 -r 60 -c:v libx264 ... output.mp4
+```
+
 ### GIF palette 为何要两阶段
 
 GIF 只能 256 色。一次 pass 的 GIF 会把全动画色彩压到 256 色通用 palette，对米色底+橙色这种细腻配色会糊。
@@ -230,7 +248,7 @@ GIF 只能 256 色。一次 pass 的 GIF 会把全动画色彩压到 256 色通�
 - [ ] Duration 参数与 HTML 里的实际动画时长匹配
 - [ ] HTML 中 Stage 检测 `window.__recording` 强制 loop=false（手写 Stage 必查；用 `assets/animations.jsx` 自带）
 - [ ] 结尾 Sprite 的 `fadeOut={0}`（视频末帧不淡出）
-- [ ] 含「Created by YY-Design」水印（仅动画场景必加；第三方品牌作品加「非官方出品 · 」前缀。详见 SKILL.md §「Skill 推广水印」）
+- [ ] 用户明确要求署名时，含「Created by YY-Design」水印（第三方品牌作品加「非官方出品 · 」前缀；模板见文末，规则见 SKILL.md 快捷指令「署名」）
 
 ## 交付时附带的说明
 
@@ -241,12 +259,12 @@ GIF 只能 256 色。一次 pass 的 GIF 会把全动画色彩压到 256 色通�
 
 | 文件 | 格式 | 规格 | 大小 |
 |---|---|---|---|
-| foo.mp4 | MP4 | 1920×1080 · 25fps · H.264 | X MB |
-| foo-60fps.mp4 | MP4 | 1920×1080 · 60fps（运动插帧）· H.264 | X MB |
+| foo.mp4 | MP4 | 1920×1080 · 30fps · H.264 | X MB |
+| foo-60fps.mp4 | MP4 | 1920×1080 · 60fps（默认帧复制；插帧版会注明）· H.264 | X MB |
 | foo.gif | GIF | 960×540 · 15fps · palette 优化 | X MB |
 
 **说明**
-- 60fps 用 minterpolate 做运动估计插帧，transform 动画效果好
+- 60fps 默认帧复制（兼容性好）；显式要求时才用 minterpolate 插帧（transform 动画效果好，复杂画面易出伪影）；真 60fps 用 HyperFrames `--fps 60` 直出
 - GIF 用 palette 优化，30s 动画可压到 3MB 左右
 
 要换尺寸或帧率说一声。
@@ -262,3 +280,18 @@ GIF 只能 256 色。一次 pass 的 GIF 会把全动画色彩压到 256 色通�
 | 「加水印」 | ffmpeg 加 `-vf "drawtext=..."` 或 `overlay=` 一个 PNG |
 | 「要透明背景」 | MP4 不支持 alpha；用 WebM VP9 + alpha 或 APNG |
 | 「要无损」 | CRF 改 0 + preset veryslow（文件会大 10 倍） |
+
+## 署名水印模板（用户明确要求署名时）
+
+SKILL.md 快捷指令「署名」规定：只在用户明确要求署名时按载体使用「翊行代码」/ YY / 王翊仰，不要默认添加水印。动画 MP4/GIF 需要署名时用以下模板（深底改用 `rgba(255,255,255,0.35)`；第三方品牌动画前缀「非官方出品 · 」）：
+
+```jsx
+<div style={{
+  position: 'absolute', bottom: 24, right: 32,
+  fontSize: 11, color: 'rgba(0,0,0,0.4)',
+  letterSpacing: '0.15em', fontFamily: 'monospace',
+  pointerEvents: 'none', zIndex: 100,
+}}>
+  Created by YY-Design
+</div>
+```

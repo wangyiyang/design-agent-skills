@@ -9,13 +9,29 @@
 #   <name>.gif         (scaled width, 15fps, palette-optimized)
 #
 # Flags:
-#   --minterpolate     Enable motion-compensated interpolation
+#   --minterpolate     Enable motion-compensated interpolation (high quality
+#                      but elementary stream has known QuickTime/Safari
+#                      compat issues — only use if your player handles it).
 #   --skip-60fps       Skip 60fps conversion (use when source is already 60fps,
 #                      e.g. rendered by HyperFrames with --fps 60)
+#
+# Default 60fps mode: simple `fps=60` filter (frame duplication). Wide
+# compatibility, plays in QuickTime / Safari / Chrome / VLC. The 60fps
+# label is for upload-platform optics; perceived smoothness is identical
+# to the source 25fps for most CSS-driven motion.
+#
+# When to enable --minterpolate: heavy translate/scale motion where you
+# want true 60fps interpolation. WARN: macOS QuickTime sometimes refuses
+# to open minterpolate output. Test before delivering.
 #
 # HyperFrames note: If your source is already 30fps+ from HyperFrames,
 # the 60fps conversion is optional. Use --skip-60fps to only generate GIF.
 # The script auto-detects source fps and skips if already >= 60.
+#
+# GIF uses two-pass palette:
+#   pass 1: palettegen with stats_mode=diff (per-video optimal palette)
+#   pass 2: paletteuse with bayer dither + rectangle diff
+# This keeps 30s/1080p animations GIF under ~4MB with good color fidelity.
 
 set -e
 
@@ -53,13 +69,15 @@ fi
 
 if [ "$SKIP_60FPS" = "0" ]; then
   if [ "$USE_MINTERPOLATE" = "1" ]; then
-    echo "▸ 60fps interpolate (minterpolate): $OUT60"
+    echo "▸ 60fps interpolate (minterpolate, high quality): $OUT60"
     VFILTER="minterpolate=fps=60:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1"
   else
     echo "▸ 60fps frame-duplicate (compat mode): $OUT60"
     VFILTER="fps=60"
   fi
 
+  # -profile:v high -level 4.0 → broad H.264 compatibility (QuickTime, Safari, mobile)
+  # -movflags +faststart        → moov atom upfront, streamable / instant-play
   ffmpeg -y -loglevel error -i "$INPUT" \
     -vf "$VFILTER" \
     -c:v libx264 -pix_fmt yuv420p -profile:v high -level 4.0 \

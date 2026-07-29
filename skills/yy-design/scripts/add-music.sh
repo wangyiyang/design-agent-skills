@@ -26,6 +26,13 @@
 #   - 0.3s fade in, 1.0s fade out (avoids hard cuts)
 #   - Video stream copied (no re-encode), audio AAC 192k
 #
+# Examples:
+#   bash add-music.sh my.mp4                              # default: tech mood
+#   bash add-music.sh my.mp4 --mood=ad                    # switch mood
+#   bash add-music.sh my.mp4 --mood=educational --out=final.mp4
+#   bash add-music.sh my.mp4 --music=~/Downloads/song.mp3 # bring your own
+#   bash add-music.sh my.mp4 --generate --mood=tech       # AI generate fresh BGM
+#
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
