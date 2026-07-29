@@ -28,7 +28,7 @@ npx skills add wangyiyang/design-agent-skills --skill yy-design -g -a codex -y
 | 幻灯片 | HTML deck、可编辑 PPTX |
 | 动画与视频 | HTML 动画、MP4、GIF |
 | 信息图 | HTML、PNG、PDF 或 SVG |
-| 设计方向 | 三个有实质差异的可视方向 |
+| 设计方向 | 三版真实视觉初稿（秒数轮盘/现实参照/最佳设计师三套逻辑并行），选定后深化 |
 | 专家评审 | 问题诊断、Keep/Fix、可执行修改 |
 | 公众号视觉 | 符合 VI 的内联 HTML 与配图 |
 
@@ -75,4 +75,6 @@ npx skills add wangyiyang/design-agent-skills --skill yy-design -g -a codex -y
 按五个维度评审这个页面，并给出优先级明确的修改清单。
 ```
 
-工作流、资源路由和验证要求见 [`SKILL.md`](SKILL.md)，翊行代码品牌规范见 [`references/yy-vi-v2.md`](references/yy-vi-v2.md)。
+工作流、资源路由和验证要求见 [`SKILL.md`](SKILL.md)，翊行代码品牌规范见 [`references/yy-vi-v2.md`](references/yy-vi-v2.md)（公众号 / 博客 / 生图 prompt 规范同目录）。
+
+> 本 skill 的设计方法论上游为 [huashu-design](https://github.com/wangyiyang/huashu-design)，最近对齐日期 2026-07-29；品牌层（VI / 公众号 / 博客 / Prompt Kit）权威来源为 Notion「YY · Personal Brand Prompt Kit」。
